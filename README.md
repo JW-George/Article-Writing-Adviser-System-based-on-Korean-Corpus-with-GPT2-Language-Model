@@ -1,2 +1,2 @@
 # The-System-for-Article-writing-advice
-The-System-for-Article-writing-advice-based-on-GPT2-language-model
+The-System-for-Article-Writing-Advice-based-on-GPT2-Language-Model
