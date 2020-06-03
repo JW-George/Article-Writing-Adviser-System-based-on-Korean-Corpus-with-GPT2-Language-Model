@@ -1,5 +1,5 @@
-# The-System-for-Article-Writing-Advice
-The-System-for-Article-Writing-Advice-based-on-GPT2-Language-Model
+# Article-Writing-Advice-System-based-on-GPT2-Language-Model
+The System for Article Writing Advice based on Korean Corpus with GPT2 Language Model
 
 ---
 
