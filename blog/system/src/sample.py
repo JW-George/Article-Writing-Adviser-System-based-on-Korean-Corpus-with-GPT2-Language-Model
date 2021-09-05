@@ -1,8 +1,7 @@
 import tensorflow as tf
 import os, sys
 sys.path.append(os.curdir+'/src')
-import model
-
+import blog.system.src.model as model
 
 def top_k_logits(logits, k):
     if k == 0:

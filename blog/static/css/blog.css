@@ -1,0 +1,31 @@
+#submit_btn {
+    margin: 10pt;
+  }
+  body {
+    background-color: white;
+    margin: 0;
+    padding: 10%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+  }
+  h1 {
+    color: black;
+}
+.fieldWrapper{
+    left:50%;
+}
+textarea{
+    width:70%;
+    height:100px;
+    left:50%;
+    margin: auto;
+}
+#output{
+    width:70%;
+    height:100px;
+    left:50%;
+}

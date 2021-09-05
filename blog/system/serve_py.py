@@ -3,8 +3,13 @@
 import argparse,json,os, sys
 import numpy as np
 import tensorflow as tf
-sys.path.append(os.curdir+'/src')
-import model,sample,refine_punc,tokenization,utils
+#sys.path.append(os.curdir+'/src')
+import blog.system.src.model as model
+import blog.system.src.sample as sample
+import blog.system.src.refine_punc as refine_punc
+import blog.system.src.tokenization as tokenization
+import blog.system.src.utils as utils
+#import model,sample,refine_punc,tokenization,utils
 
 class GPT:
     def __init__(self,checkpoint_path,device,seed=None,nsamples=1,batch_size=1,tok_length=256,sent_length=3,top_k=0,top_p=0.0):
@@ -21,12 +26,13 @@ class GPT:
         self.nsamples = nsamples
 
         self.tokenizer = tokenization.FullTokenizer(
-            vocab_file='./vocab/vocab.txt',
+            #vocab_file='./vocab/vocab.txt',
+            vocab_file='blog/system/vocab/vocab.txt',
             do_lower_case=False)
         self.en = False
 
         hparams = model.default_hparams()
-        with open(os.path.join('./vocab/hparams.json')) as f:
+        with open(os.path.join('blog/system/vocab/hparams.json')) as f:
             hparams.override_from_dict(json.load(f))
 
         if tok_length is None:
@@ -95,7 +101,8 @@ class GPT:
                     output.append(text)
         return output
 
-if __name__ == '__main__':
+def run_model(input_text):
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('-ckpt', '--checkpoint_path', type=str, default='./pre_trained/test/',
                         help='trained checkpoint path')
@@ -107,10 +114,11 @@ if __name__ == '__main__':
     parser.add_argument("--sent_length", type=int, default=3)
     parser.add_argument("--top_k", type=int, default=0)
     parser.add_argument("--top_p", type=float, default=.0)
-    parser.add_argument("--context", type=str, default="트럼프")
+    parser.add_argument("--context", type=str, default=input_text)
     args = parser.parse_args()
+    """
+    #model = GPT(args.checkpoint_path,args.device,args.seed,args.nsamples,args.batch_size,args.tok_length,args.sent_length,args.top_k,args.top_p)
+    model = GPT('blog/system/pre_trained/test/',1,None,1,1,128,3,0,.0)
 
-    model = GPT(args.checkpoint_path,args.device,args.seed,args.nsamples,args.batch_size,args.tok_length,args.sent_length,args.top_k,args.top_p)
-
-    out = model.infer(args.context)
-    print(out)
+    out = model.infer(input_text)
+    return out

@@ -1,0 +1,31 @@
+{% load static %}
+<html>
+    <head>
+        <title>기사 작성 어드바이스 시스템</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+   
+    </head>
+    <body>  
+        <div className="about__container">
+            <h3>GPT-2 언어 모델을 접목한</h3>
+            <h1>기사 작성 어드바이스 시스템<br><br></h1>
+            <p class="bg-primary">
+                <br>한글 코퍼스를 바탕으로 딥러닝 언어 모델인 GPT-2를 학습한 언어 모델로<br>
+                기사 작성을 어드바이스 해줍니다.<br><br>
+            사용방법 : keyword 입력 후 "새로운 문장 생성" 버튼 클릭!<br><br></p>
+            <p>
+            <form method="POST" id="input" class="post-form" >{% csrf_token %}
+                <div class="fieldWrapper">
+                {{ form.text }}
+                </div>
+                <p> <button type="submit" id="submit_btn" class="save btn btn-info btn-lg" >새로운 문장 생성</button></p>
+            </form>
+            <div id="output_div">
+                <textarea id="output"  class="form-control" readonly="readonly">{{output}}</textarea>
+            </div>
+        </div>
+    </body>
+</html>
